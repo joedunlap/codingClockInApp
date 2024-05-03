@@ -1,7 +1,7 @@
 {
     "mongo": {
       "url": "mongodb://dev-mongo-instance:27017",
-      "database": "todo",
+      "database": "codingTimeLog", 
       "minPoolSize": 1,
       "maxPoolSize": 5
     }

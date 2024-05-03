@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import errorMiddleware from './middlewares/errorHandler.js';
-import TimeLogsRouter from './routers/timeLogsRouter.js';
+import CodingLogsRouter from './routers/routers.js';
 import { db } from './lib/database.js';
 
 const { json } = bodyParser;
