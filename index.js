@@ -11,11 +11,10 @@ const port = 3000;
 app.use(json());
 
 // Routes for time logs
-app.post('/api/v1/logs', createLog);
-app.patch('/api/v1/logs/:id', updateLog);
-app.get('/api/v1/logs', getAllLogs);
-app.get('/api/v1/logs/:id', getLogById);
-app.delete('/api/v1/logs/:id', deleteLog);
+app.post('/api/v1/logs');
+app.patch('/api/v1/logs/:id');
+app.put('/api/v1/logs/: id');
+app.use('/api/v1/logs', CodingLogsRouter);
 
 // Catch-all route for handling undefined routes
 app.use((req, res, next) => {

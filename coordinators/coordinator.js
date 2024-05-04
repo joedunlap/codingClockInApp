@@ -1,8 +1,8 @@
 import { v4 as uuid } from 'uuid';
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
-import CodingLogModel from '../models/codingLogModel.js';
-import codingLogSchema from '../schemas/codingLog.json' assert { type: 'json' };
+import CodingLogModel from '../models/model.js';
+import codingLogSchema from '../schemas/codelog.json' assert { type: 'json' };
 
 const ajv = new Ajv();
 addFormats(ajv);
