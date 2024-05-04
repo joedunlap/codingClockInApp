@@ -8,7 +8,7 @@ import { db } from './lib/database.js';
 
 const { json } = bodyParser;
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.use(json());
 
