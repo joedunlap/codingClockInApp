@@ -15,6 +15,7 @@ export default class CodingLogCoordinator {
     const codingLog = {
       ...newCodingLog,
       id: uuid(),
+      startTime: new Date().toISOString()
     };
 
     const valid = validate(codingLog);

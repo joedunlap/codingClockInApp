@@ -1,5 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import { startTimeMiddleware } from './middlewares/startTimemiddleware.js';
+import { endTimeAndDurationMiddleware } from './middlewares/endDurationmiddleware.js';
 import errorMiddleware from './middlewares/errorHandler.js';
 import CodingLogsRouter from './routers/routers.js';
 import { db } from './lib/database.js';
@@ -10,11 +12,17 @@ const port = 3000;
 
 app.use(json());
 
-// Routes for time logs
-app.post('/api/v1/logs');
-app.patch('/api/v1/logs/:id');
-app.put('/api/v1/logs/: id');
-app.use('/api/v1/logs', CodingLogsRouter);
+// Apply startTimeMiddleware for all time log routes
+app.use('/api/v1/logs', startTimeMiddleware);
+
+// Individual route handlers for specific HTTP methods
+app.post('/api/v1/logs', CodingLogsRouter); // POST request to create a new log
+
+app.use('/api/v1/logs', CodingLogsRouter); // Use the router for all routes under '/api/v1/logs'
+
+// Middleware for PATCH and PUT requests with endTimeAndDurationMiddleware
+app.patch('/api/v1/logs/:id', endTimeAndDurationMiddleware); 
+app.put('/api/v1/logs/:id', endTimeAndDurationMiddleware);
 
 // Catch-all route for handling undefined routes
 app.use((req, res, next) => {

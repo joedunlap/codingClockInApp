@@ -2,7 +2,7 @@ import { db } from '../lib/database.js';
 import Constants from '../lib/constants.js';
 
 export default class TimeLogModel {
-  static getTimeLogs = async () => {
+  static getCodingLogs = async () => {
     try {
       const timeLogs = await db.getTimeLogsCollection().find({}, { projection: Constants.DEFAULT_PROJECTION }).toArray();
       return timeLogs;
@@ -12,7 +12,7 @@ export default class TimeLogModel {
     }
   };
 
-  static createTimeLog = async (newTimeLog) => {
+  static createCodingLog = async (newTimeLog) => {
     try {
       await db.getTimeLogsCollection().insertOne(newTimeLog);
       return newTimeLog;
@@ -22,7 +22,7 @@ export default class TimeLogModel {
     }
   };
 
-  static getTimeLogById = async (id) => {
+  static getCodingLogById = async (id) => {
     try {
       const timeLog = await db.getTimeLogsCollection().findOne({ id }, { projection: Constants.DEFAULT_PROJECTION });
       return timeLog;
@@ -32,7 +32,7 @@ export default class TimeLogModel {
     }
   };
 
-  static deleteTimeLog = async (id) => {
+  static deleteCodingLog = async (id) => {
     try {
       const result = await db.getTimeLogsCollection().deleteOne({ id });
       if (result.deletedCount === 1) {
@@ -45,7 +45,7 @@ export default class TimeLogModel {
     }
   };
 
-  static updateTimeLog = async (id, updatedTimeLog) => {
+  static updateCodingLog = async (id, updatedTimeLog) => {
     try {
       const result = await db.getTimeLogsCollection().updateOne({ id }, { $set: updatedTimeLog });
       if (result.matchedCount === 1) {
